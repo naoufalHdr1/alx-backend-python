@@ -6,11 +6,12 @@ dictionary
 from typing import Mapping, Any, TypeVar, Union
 
 T = TypeVar('T')
+deft = Union[T, None]
 
 def safely_get_value(
         dct: Mapping,
         key: Any,
-        default: Union[T, None] = None
+        default: deft = None
         ) -> Union[Any, T]:
     """
     Safely retrieves the value from a dictionary for the given key.
