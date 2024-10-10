@@ -5,14 +5,13 @@ dictionary
 """
 from typing import Mapping, Any, TypeVar, Union
 
+
 T = TypeVar('T')
 deft = Union[T, None]
+retrn = Union[Any, T]
 
-def safely_get_value(
-        dct: Mapping,
-        key: Any,
-        default: deft = None
-        ) -> Union[Any, T]:
+
+def safely_get_value(dct: Mapping, key: Any, default: deft = None) -> retrn:
     """
     Safely retrieves the value from a dictionary for the given key.
     """
