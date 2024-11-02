@@ -4,7 +4,7 @@ Module for testing the access_nested_map function with various test cases.
 """
 import unittest
 from parameterized import parameterized
-from utils import access_nested_map, get_json
+from utils import access_nested_map, get_json, memoize
 from unittest.mock import patch, Mock
 
 
@@ -64,6 +64,39 @@ class TestGetJson(unittest.TestCase):
 
         # Assert the output of get_json is equal to test_payload
         self.assertEqual(result, test_payload)
+
+
+class Memoize(unittest.TestCase):
+    """
+    Test case for the memoize decorator
+    """
+
+    def test_memoize(self):
+        """
+        Test that memoize returns the expected result and ensure it
+        called once.
+        """
+
+        class TestClass:
+            def a_method(self):
+                return 42
+
+            @memoize
+            def a_property(self):
+                return self.a_method()
+
+        instance = TestClass()
+
+        with patch.object(
+                TestClass, 'a_method', return_value=42
+        ) as mock_method:
+            result1 = instance.a_property
+            result2 = instance.a_property
+
+            self.assertEqual(result1, 42)
+            self.assertEqual(result2, 42)
+
+            mock_method.assert_called_once()
 
 
 if __name__ == "__main__":
