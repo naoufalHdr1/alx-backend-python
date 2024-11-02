@@ -66,7 +66,7 @@ class TestGetJson(unittest.TestCase):
         self.assertEqual(result, test_payload)
 
 
-class Memoize(unittest.TestCase):
+class TestMemoize(unittest.TestCase):
     """
     Test case for the memoize decorator
     """
