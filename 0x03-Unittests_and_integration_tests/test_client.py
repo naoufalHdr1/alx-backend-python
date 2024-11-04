@@ -144,7 +144,7 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
 
         self.assertEqual(repos, self.expected_repos)
 
-    def test_apache2_repos(self):
+    def test_public_repos_with_license(self):
         """
         """
 
